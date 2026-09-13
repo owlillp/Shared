@@ -1,0 +1,11 @@
+<Solution>
+  <Folder Name="/SolutionFolder/">
+    <File Path=".editorconfig" />
+    <File Path="Directory.Build.props" />
+    <File Path="Directory.Packages.props" />
+  </Folder>
+  <Project Path="src\Shared.Core\Shared.Core.csproj" />
+  <Project Path="src\Shared.Framework\Shared.Framework.csproj" />
+  <Project Path="src\Shared.Messaging\Shared.Messaging.csproj" />
+  <Project Path="src\Shared.SharedKernel\Shared.SharedKernel.csproj" />
+</Solution>

@@ -1,0 +1,21 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+  <PropertyGroup>
+    <PackageId>Owlip.Shared.Messaging</PackageId>
+    <Version>0.0.1</Version>
+    <Authors>owlillp</Authors>
+    <Company>owlillp</Company>
+    <PackageDescription>Messaging</PackageDescription>
+    <RepositoryUrl>https://github.com/owlillp/Shared</RepositoryUrl>
+  </PropertyGroup>
+  
+  <ItemGroup>
+    <PackageReference Include="Npgsql" />
+    <PackageReference Include="WolverineFx" />
+    <PackageReference Include="WolverineFx.RabbitMQ" />
+    <PackageReference Include="Microsoft.Extensions.Diagnostics.HealthChecks" />
+    <PackageReference Include="Microsoft.Extensions.Diagnostics.HealthChecks.Abstractions" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Shared.SharedKernel\Shared.SharedKernel.csproj" />
+  </ItemGroup>
+</Project>

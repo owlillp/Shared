@@ -1,0 +1,14 @@
+namespace Shared.Framework.Cors;
+
+public class CorsSettings
+{
+    public const string SECTION_NAME = "Cors";
+
+    public IReadOnlyList<string> AllowedOrigins { get; init; } = [];
+
+    public bool AllowCredentials { get; init; } = true;
+
+    public IReadOnlyList<string> AllowedHeaders { get; init; } = [];
+
+    public IReadOnlyList<string> AllowedMethods { get; init; } = [];
+}

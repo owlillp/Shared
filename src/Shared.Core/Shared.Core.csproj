@@ -1,0 +1,26 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <PackageId>Owlip.Shared.Core</PackageId>
+    <Version>0.0.1</Version>
+    <Authors>owlillp</Authors>
+    <Company>owlillp</Company>
+    <PackageDescription>Core</PackageDescription>
+    <RepositoryUrl>https://github.com/owlillp/Shared</RepositoryUrl>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Dapper" />
+    <PackageReference Include="FluentValidation" />
+    <PackageReference Include="FluentValidation.DependencyInjectionExtensions" />
+    <PackageReference Include="Scrutor" />
+    <PackageReference Include="WolverineFx.RabbitMQ" />
+    <PackageReference Include="WolverineFx.Postgresql" />
+    <PackageReference Include="CSharpFunctionalExtensions" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\Shared.SharedKernel\Shared.SharedKernel.csproj" />
+  </ItemGroup>
+
+</Project>

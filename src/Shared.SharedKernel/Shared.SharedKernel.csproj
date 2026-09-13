@@ -8,5 +8,9 @@
         <PackageDescription>SharedKernel</PackageDescription>
         <RepositoryUrl>https://github.com/owlillp/Shared</RepositoryUrl>
     </PropertyGroup>
+    
+    <ItemGroup>
+      <PackageReference Include="CSharpFunctionalExtensions" />
+    </ItemGroup>
 
 </Project>
