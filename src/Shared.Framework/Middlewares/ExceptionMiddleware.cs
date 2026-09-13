@@ -1,5 +1,4 @@
 ﻿using System.Security.Authentication;
-using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Http;
 using Microsoft.Extensions.Logging;
 using Shared.SharedKernel;
@@ -8,21 +7,13 @@ using Shared.SharedKernel.Exceptions;
 
 namespace Shared.Framework.Middlewares;
 
-public static class ExceptionMiddlewareExtensions
-{
-    public static IApplicationBuilder UseExceptionMiddleware(this IApplicationBuilder builder)
-    {
-        return builder.UseMiddleware<ExceptionMiddleware>();
-    }
-}
-
 public class ExceptionMiddleware(RequestDelegate next, ILogger<ExceptionMiddleware> logger)
 {
     public async Task InvokeAsync(HttpContext context)
     {
         try
         {
-            await next(context);
+            await next(context).ConfigureAwait(false);
         }
         catch (Exception ex)
         {
@@ -50,14 +41,14 @@ public class ExceptionMiddleware(RequestDelegate next, ILogger<ExceptionMiddlewa
 
             BadHttpRequestException => (StatusCodes.Status400BadRequest, Error.Validation("request.invalid", "Некорректный запрос")),
 
-            _ => (StatusCodes.Status500InternalServerError, Error.Failure("server.internal", "Внутренняя ошибка сервера"))
+            _ => (StatusCodes.Status500InternalServerError, Error.Failure("server.internal", "Внутренняя ошибка сервера")),
         };
 
         var envelope = Envelope.Fail(error);
         context.Response.ContentType = "application/json";
         context.Response.StatusCode = statusCode;
 
-        return context.Response.WriteAsJsonAsync(envelope);
+        return context.Response.WriteAsJsonAsync(envelope, CancellationToken.None);
     }
 
     private static int GetStatusCodeFromErrorType(ErrorType errorType) =>

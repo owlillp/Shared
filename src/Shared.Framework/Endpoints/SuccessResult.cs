@@ -14,7 +14,7 @@ public class SuccessResult : IResult
 
         httpContext.Response.StatusCode = (int)HttpStatusCode.OK;
 
-        return httpContext.Response.WriteAsJsonAsync(envelope);
+        return httpContext.Response.WriteAsJsonAsync(envelope, CancellationToken.None);
     }
 }
 
@@ -28,6 +28,6 @@ public class SuccessResult<TValue>(TValue value) : IResult
 
         httpContext.Response.StatusCode = StatusCodes.Status200OK;
 
-        return httpContext.Response.WriteAsJsonAsync(envelope);
+        return httpContext.Response.WriteAsJsonAsync(envelope, CancellationToken.None);
     }
 }

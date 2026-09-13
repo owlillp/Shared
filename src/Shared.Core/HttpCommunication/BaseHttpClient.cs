@@ -227,7 +227,7 @@ public abstract class BaseHttpClient(
         if (response.StatusCode == HttpStatusCode.NoContent)
             return Result.Success<T?, Error>(null);
 
-        Envelope<T>? envelope = await response.Content.ReadFromJsonAsync<Envelope<T>>(ct);
+        Envelope<T>? envelope = await response.Content.ReadFromJsonAsync<Envelope<T>>(ct).ConfigureAwait(false);
 
         if (envelope is null)
         {
@@ -262,7 +262,7 @@ public abstract class BaseHttpClient(
         HttpResponseMessage response,
         CancellationToken ct)
     {
-        Envelope? envelope = await response.Content.ReadFromJsonAsync<Envelope>(ct);
+        Envelope? envelope = await response.Content.ReadFromJsonAsync<Envelope>(ct).ConfigureAwait(false);
 
         if (envelope is null)
         {

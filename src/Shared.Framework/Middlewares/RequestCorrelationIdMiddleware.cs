@@ -1,17 +1,8 @@
-﻿using Microsoft.AspNetCore.Builder;
-using Microsoft.AspNetCore.Http;
+﻿using Microsoft.AspNetCore.Http;
 using Microsoft.Extensions.Primitives;
 using Serilog.Context;
 
 namespace Shared.Framework.Middlewares;
-
-public static class RequestCorrelationIdMiddlewareExtensions
-{
-    public static IApplicationBuilder UseRequestCorrelationId(this IApplicationBuilder app)
-    {
-        return app.UseMiddleware<RequestCorrelationIdMiddleware>();
-    }
-}
 
 public class RequestCorrelationIdMiddleware(RequestDelegate next)
 {
@@ -26,7 +17,7 @@ public class RequestCorrelationIdMiddleware(RequestDelegate next)
 
         using (LogContext.PushProperty(CORRELATION_ID, correlationId))
         {
-            await next(context);
+            await next(context).ConfigureAwait(false);
         }
     }
 }

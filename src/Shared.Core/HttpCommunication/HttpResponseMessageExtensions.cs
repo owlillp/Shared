@@ -32,7 +32,7 @@ public static class HttpResponseMessageExtensions
                     return response.Error;
                 }
 
-                if (response.Result == null)
+                if (response.Result == null!)
                 {
                     return Error.Failure("http.error", "Error while reading http response");
                 }

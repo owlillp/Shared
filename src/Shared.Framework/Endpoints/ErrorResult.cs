@@ -15,7 +15,7 @@ public class ErrorResult(Error error) : IResult
         var envelope = Envelope.Fail(error);
         httpContext.Response.StatusCode = statusCode;
 
-        return httpContext.Response.WriteAsJsonAsync(envelope);
+        return httpContext.Response.WriteAsJsonAsync(envelope, cancellationToken: httpContext.RequestAborted);
     }
 
     private static int GetStatusCodeFromErrorType(ErrorType errorType) =>

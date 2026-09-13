@@ -26,7 +26,7 @@ public static class CorsExtensions
             if (corsSettings.AllowCredentials)
                 config.AllowCredentials();
 
-            if (corsSettings.AllowedHeaders.Count > 0 && !corsSettings.AllowedHeaders.Contains("*"))
+            if (corsSettings.AllowedHeaders.Count > 0 && !corsSettings.AllowedHeaders.Contains("*", StringComparer.OrdinalIgnoreCase))
             {
                 config.WithHeaders(corsSettings.AllowedHeaders.ToArray());
             }
@@ -35,7 +35,7 @@ public static class CorsExtensions
                 config.AllowAnyHeader();
             }
 
-            if (corsSettings.AllowedMethods.Count > 0 && !corsSettings.AllowedMethods.Contains("*"))
+            if (corsSettings.AllowedMethods.Count > 0 && !corsSettings.AllowedMethods.Contains("*", StringComparer.OrdinalIgnoreCase))
             {
                 config.WithMethods(corsSettings.AllowedMethods.ToArray());
             }
