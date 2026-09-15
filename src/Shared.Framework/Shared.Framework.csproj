@@ -2,7 +2,7 @@
 
   <PropertyGroup>
     <PackageId>Owlip.Shared.Framework</PackageId>
-    <Version>0.0.2</Version>
+    <Version>0.0.3</Version>
     <Authors>owlillp</Authors>
     <Company>owlillp</Company>
     <PackageDescription>Framework</PackageDescription>
