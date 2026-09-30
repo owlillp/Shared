@@ -82,13 +82,19 @@ public sealed class ServiceTokenProvider(
 
     private async Task<HttpResponseMessage> RequestTokenAsync(CancellationToken cancellationToken)
     {
-        using FormUrlEncodedContent requestBody = new(
+        List<KeyValuePair<string, string>> form =
         [
             new KeyValuePair<string, string>("grant_type", "client_credentials"),
             new KeyValuePair<string, string>("client_id", _options.ClientId),
             new KeyValuePair<string, string>("client_secret", _options.ClientSecret),
-            new KeyValuePair<string, string>("scope", string.Join(' ', _options.Scopes)),
-        ]);
+        ];
+
+        if (_options.Scopes.Count > 0)
+        {
+            form.Add(new KeyValuePair<string, string>("scope", string.Join(' ', _options.Scopes)));
+        }
+
+        using FormUrlEncodedContent requestBody = new(form);
 
         HttpClient httpClient = httpClientFactory.CreateClient();
 

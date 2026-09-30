@@ -95,12 +95,12 @@ public static class GeneralErrors
 
     public static Error Unauthorized()
     {
-        return Error.Failure("unauthorized", "Требуется авторизация");
+        return Error.Authentication("unauthorized", "Требуется авторизация");
     }
 
     public static Error Forbidden()
     {
-        return Error.Failure("forbidden", "Доступ запрещён");
+        return Error.Authorization("forbidden", "Доступ запрещён");
     }
 
     public static Error InvalidOperation(string? message = null)

@@ -10,7 +10,9 @@ public sealed class ServiceTokenOptions
 
     public string ClientSecret { get; set; } = string.Empty;
 
-    public IReadOnlyList<string> Scopes { get; set; } = ["openid", "service"];
+    // Пусто = scope не отправляется (сервер выдаст токен без scopes).
+    // Задавайте явно в конфиге: ["auth"] и т.п.
+    public IReadOnlyList<string> Scopes { get; set; } = [];
 
     public bool IsConfigured =>
         !string.IsNullOrEmpty(TokenUrl)
