@@ -1,8 +1,7 @@
 ﻿using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
-using Microsoft.Extensions.DependencyInjection.Extensions;
 
-namespace Shared.Framework.Authentication.HttpClient;
+namespace Shared.Framework.Authentication.HttpClients;
 
 public static class HttpClientAuthExtensions
 {
@@ -10,15 +9,12 @@ public static class HttpClientAuthExtensions
         this IServiceCollection services,
         IConfiguration configuration)
     {
-        ArgumentNullException.ThrowIfNull(services);
-        ArgumentNullException.ThrowIfNull(configuration);
-
         services.Configure<ServiceTokenOptions>(configuration.GetSection(ServiceTokenOptions.SECTION_NAME));
 
         services.AddHttpContextAccessor();
 
-        services.TryAddSingleton(TimeProvider.System);
-        services.TryAddSingleton<ServiceTokenProvider>();
+        services.AddHttpClient("ServiceTokenProvider");
+        services.AddSingleton<ServiceTokenProvider>();
         services.AddTransient<TokenForwardingHandler>();
 
         return services;

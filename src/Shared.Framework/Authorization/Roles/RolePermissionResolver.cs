@@ -1,6 +1,6 @@
 ﻿using Shared.Framework.Authentication;
 
-namespace Shared.Framework.Authorization;
+namespace Shared.Framework.Authorization.Roles;
 
 public sealed class RolePermissionResolver(IReadOnlyDictionary<string, IReadOnlyList<string>> rolePermissions) : IPermissionResolver
 {
@@ -11,7 +11,7 @@ public sealed class RolePermissionResolver(IReadOnlyDictionary<string, IReadOnly
         var permissions = new HashSet<string>(StringComparer.Ordinal);
         foreach (string role in roles)
         {
-            
+
             if (rolePermissions.TryGetValue(role, out IReadOnlyList<string>? value))
             {
                 permissions.UnionWith(value);

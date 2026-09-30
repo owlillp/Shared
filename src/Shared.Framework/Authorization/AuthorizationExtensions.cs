@@ -1,24 +1,15 @@
-﻿using Microsoft.AspNetCore.Authorization;
-using Microsoft.AspNetCore.Builder;
-using Microsoft.Extensions.DependencyInjection;
-using Shared.Framework.Authentication;
+﻿using Microsoft.AspNetCore.Builder;
+using Shared.Framework.Authorization.Permissions;
 
 namespace Shared.Framework.Authorization;
 
 public static class AuthorizationExtensions
 {
-    public static IServiceCollection AddPermissionAuthorization(
-        this IServiceCollection services,
-        IReadOnlyDictionary<string, IReadOnlyList<string>> rolePermissions,
-        string authenticationScheme)
+    public static TBuilder AllowAnonymousEndpoint<TBuilder>(this TBuilder builder)
+        where TBuilder : IEndpointConventionBuilder
     {
-        services.AddAuthorization();
-
-        services.AddSingleton<IPermissionResolver, RolePermissionResolver>();
-        services.AddSingleton<IAuthorizationPolicyProvider, PermissionPolicyProvider>();
-        services.AddSingleton<IAuthorizationHandler, PermissionAuthorizationHandler>();
-
-        return services;
+        builder.AllowAnonymous();
+        return builder;
     }
 
     public static RouteHandlerBuilder RequirePermissions(
@@ -30,5 +21,15 @@ public static class AuthorizationExtensions
             .ToArray();
 
         return builder.RequireAuthorization(policyNames);
+    }
+
+    public static RouteHandlerBuilder RequireAnyRole(
+        this RouteHandlerBuilder builder,
+        params string[] roles)
+    {
+        string policyName = $"{PermissionPolicyProvider.ROLE_POLICY_PREFIX}{string.Join(',', roles)}";
+        builder.RequireAuthorization(policyName);
+
+        return builder;
     }
 }

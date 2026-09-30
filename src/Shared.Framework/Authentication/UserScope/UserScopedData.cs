@@ -1,8 +1,8 @@
 using System.Security.Claims;
 
-namespace Shared.Framework.Authentication;
+namespace Shared.Framework.Authentication.UserScope;
 
-public sealed class CurrentUser
+public sealed class UserScopedData
 {
     public Guid? Id { get; private set; }
 
@@ -16,8 +16,6 @@ public sealed class CurrentUser
 
     public IReadOnlyList<string> Permissions { get; private set; } = [];
 
-    public IReadOnlyList<ClaimDto> Claims { get; private set; } = [];
-
     public bool IsAuthenticated => Id.HasValue;
 
     public Guid RequireId() => Id ?? throw new InvalidOperationException("CurrentUser is not authenticated. Did you forget [Authorize] on the endpoint?");
@@ -25,14 +23,13 @@ public sealed class CurrentUser
     public bool HasPermission(string permission) =>
         Permissions.Contains(permission, StringComparer.Ordinal);
 
+    public bool HasRole(string role) =>
+        Roles.Any(r => string.Equals(r, role, StringComparison.OrdinalIgnoreCase));
+
     internal void Hydrate(ClaimsPrincipal principal, IPermissionResolver permissionResolver)
     {
         if (principal.Identity?.IsAuthenticated != true)
             return;
-
-        Claims = principal.Claims
-            .Select(c => new ClaimDto(c.Type, c.Value))
-            .ToArray();
 
         string? sub = principal.FindFirstValue(AuthClaimTypes.SUB);
         if (Guid.TryParse(sub, out Guid id))

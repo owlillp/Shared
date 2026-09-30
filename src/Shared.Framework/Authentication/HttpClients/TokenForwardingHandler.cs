@@ -1,7 +1,7 @@
 ﻿using System.Net.Http.Headers;
 using Microsoft.AspNetCore.Http;
 
-namespace Shared.Framework.Authentication.HttpClient;
+namespace Shared.Framework.Authentication.HttpClients;
 
 public sealed class TokenForwardingHandler(
     IHttpContextAccessor httpContextAccessor,
@@ -21,13 +21,13 @@ public sealed class TokenForwardingHandler(
         }
         else
         {
-            var token = await serviceTokenProvider.GetTokenAsync(cancellationToken);
+            var token = await serviceTokenProvider.GetTokenAsync(cancellationToken).ConfigureAwait(false);
             if (token.IsSuccess)
             {
                 request.Headers.Authorization = new AuthenticationHeaderValue("Bearer", token.Value);
             }
         }
 
-        return await base.SendAsync(request, cancellationToken);
+        return await base.SendAsync(request, cancellationToken).ConfigureAwait(false);
     }
 }

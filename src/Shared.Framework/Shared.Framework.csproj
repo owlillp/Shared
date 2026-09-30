@@ -2,7 +2,7 @@
 
   <PropertyGroup>
     <PackageId>Owlip.Shared.Framework</PackageId>
-    <Version>0.0.7</Version>
+    <Version>0.0.9</Version>
     <Authors>owlillp</Authors>
     <Company>owlillp</Company>
     <PackageDescription>Framework</PackageDescription>
@@ -30,6 +30,7 @@
     <PackageReference Include="Serilog.Sinks.Debug" />
     <PackageReference Include="Serilog.Sinks.Seq" />
     <PackageReference Include="Microsoft.AspNetCore.OpenApi" />
+    <PackageReference Include="Scalar.AspNetCore" />
   </ItemGroup>
 
 </Project>
