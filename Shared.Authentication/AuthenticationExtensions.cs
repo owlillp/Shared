@@ -22,6 +22,13 @@ public static class AuthenticationExtensions
         IReadOnlyDictionary<string, IReadOnlyList<string>> rolePermissions,
         string sectionName = BearerTokenSettings.SECTION_NAME)
     {
+        services.AddAuthorization(options =>
+        {
+            options.FallbackPolicy = new AuthorizationPolicyBuilder()
+                .RequireAuthenticatedUser()
+                .Build();
+        });
+
         services.AddBearerAuthentication(configuration, sectionName);
         services.AddAuthorization();
 
@@ -31,13 +38,6 @@ public static class AuthenticationExtensions
         services.AddScoped<IAuthorizationHandler, PermissionAuthorizationHandler>();
         services.AddScoped<IAuthorizationHandler, RoleAuthorizationHandler>();
         services.AddUserScopedData();
-
-        services.AddAuthorization(options =>
-        {
-            options.FallbackPolicy = new AuthorizationPolicyBuilder()
-                .RequireAuthenticatedUser()
-                .Build();
-        });
 
         return services;
     }
@@ -77,7 +77,7 @@ public static class AuthenticationExtensions
             });
     }
 
-    public static IApplicationBuilder UseBearerAuthentication(this IApplicationBuilder app)
+    public static IApplicationBuilder UsePlatformAuthentication(this IApplicationBuilder app)
     {
         app.UseAuthentication();
         app.UseMiddleware<UserScopedDataMiddleware>();
