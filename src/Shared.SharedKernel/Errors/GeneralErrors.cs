@@ -1,5 +1,8 @@
-namespace Shared.SharedKernel.Errors;
+﻿namespace Shared.SharedKernel.Errors;
 
+/// <summary>
+/// Фабрика типовых доменных ошибок (валидация, not found, конфликты и т.п.).
+/// </summary>
 public static class GeneralErrors
 {
     public static Error ValueIsInvalid(string? fieldName = null)

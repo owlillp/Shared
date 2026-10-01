@@ -1,5 +1,8 @@
-﻿namespace Shared.Framework.Authentication.HttpClients;
+﻿namespace Shared.Authentication.Authentication.HttpServerClients;
 
+/// <summary>
+/// Настройки получения сервисного токена по client_credentials (секция ServiceToken).
+/// </summary>
 public sealed class ServiceTokenOptions
 {
     public const string SECTION_NAME = "ServiceToken";
@@ -10,8 +13,6 @@ public sealed class ServiceTokenOptions
 
     public string ClientSecret { get; set; } = string.Empty;
 
-    // Пусто = scope не отправляется (сервер выдаст токен без scopes).
-    // Задавайте явно в конфиге: ["auth"] и т.п.
     public IReadOnlyList<string> Scopes { get; set; } = [];
 
     public bool IsConfigured =>

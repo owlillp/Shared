@@ -1,10 +1,13 @@
-using Microsoft.AspNetCore.Builder;
+﻿using Microsoft.AspNetCore.Builder;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Options;
 
 namespace Shared.Framework.Cors;
 
+/// <summary>
+/// Регистрация и применение CORS-политики из конфигурации.
+/// </summary>
 public static class CorsExtensions
 {
     public static IServiceCollection AddFrameworkCors(this IServiceCollection services, IConfiguration configuration)

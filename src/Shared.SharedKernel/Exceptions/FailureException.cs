@@ -1,7 +1,10 @@
-using Shared.SharedKernel.Errors;
+﻿using Shared.SharedKernel.Errors;
 
 namespace Shared.SharedKernel.Exceptions;
 
+/// <summary>
+/// Исключение внутренней ошибки (HTTP 500), оборачивающее доменный <see cref="Error"/>.
+/// </summary>
 public class FailureException : Exception
 {
     public Error Error { get; } = null!;

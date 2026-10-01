@@ -2,7 +2,7 @@
 
   <PropertyGroup>
     <PackageId>Owlip.Shared.Core</PackageId>
-    <Version>0.0.1</Version>
+    <Version>0.1.0</Version>
     <Authors>owlillp</Authors>
     <Company>owlillp</Company>
     <PackageDescription>Core</PackageDescription>

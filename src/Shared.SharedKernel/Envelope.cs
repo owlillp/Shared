@@ -1,8 +1,11 @@
-using System.Text.Json.Serialization;
+﻿using System.Text.Json.Serialization;
 using Shared.SharedKernel.Errors;
 
 namespace Shared.SharedKernel;
 
+/// <summary>
+/// Единый конверт ответа API: результат или ошибка, флаг isError и время генерации.
+/// </summary>
 public record Envelope
 {
     public object? Result { get; }
@@ -28,6 +31,9 @@ public record Envelope
         new(null, error);
 }
 
+/// <summary>
+/// Типизированный конверт ответа API с полезной нагрузкой и ошибкой.
+/// </summary>
 public record Envelope<T>
 {
     public T? Result { get; }

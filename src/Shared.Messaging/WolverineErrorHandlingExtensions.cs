@@ -5,6 +5,9 @@ using Wolverine.ErrorHandling;
 
 namespace Shared.Messaging;
 
+/// <summary>
+/// Стандартные политики обработки ошибок Wolverine: ретраи с задержкой и перевод в error queue.
+/// </summary>
 public static class WolverineErrorHandlingExtensions
 {
     public static void ConfigureStandardErrorPolicies(this WolverineOptions opts)

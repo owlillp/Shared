@@ -1,9 +1,12 @@
 ﻿using Microsoft.AspNetCore.Authorization;
 using Microsoft.Extensions.Logging;
-using Shared.Framework.Authentication.UserScope;
+using Shared.Authentication.Authentication.UserScope;
 
-namespace Shared.Framework.Authorization.Permissions;
+namespace Shared.Authentication.Authorization.Permissions;
 
+/// <summary>
+/// Проверяет наличие требуемого права у текущего пользователя.
+/// </summary>
 public sealed class PermissionAuthorizationHandler(
     UserScopedData userScopedData,
     ILogger<PermissionAuthorizationHandler> logger) : AuthorizationHandler<PermissionRequirement>

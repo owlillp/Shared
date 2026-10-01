@@ -4,6 +4,9 @@ using Microsoft.Extensions.Diagnostics.HealthChecks;
 
 namespace Shared.Messaging;
 
+/// <summary>
+/// Регистрирует health-check RabbitMQ по строке подключения из конфигурации.
+/// </summary>
 public static class RabbitMqHealthCheckExtensions
 {
     public static IHealthChecksBuilder AddRabbitMqCheck(

@@ -1,7 +1,10 @@
-using Shared.SharedKernel.Errors;
+﻿using Shared.SharedKernel.Errors;
 
 namespace Shared.SharedKernel.Exceptions;
 
+/// <summary>
+/// Невосстановимая ошибка, не подлежащая повторной обработке.
+/// </summary>
 public class PermanentException : Exception
 {
     public Error Error { get; } = null!;

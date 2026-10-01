@@ -1,5 +1,8 @@
-﻿namespace Shared.Framework.Authentication;
+﻿namespace Shared.Authentication.Authentication;
 
+/// <summary>
+/// Имена claim-типов, используемых платформой при аутентификации.
+/// </summary>
 public static class AuthClaimTypes
 {
     public const string SUB = "sub";

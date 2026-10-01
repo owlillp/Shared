@@ -3,6 +3,9 @@ using Microsoft.Extensions.Logging;
 
 namespace Shared.Core.HttpCommunication;
 
+/// <summary>
+/// DelegatingHandler, логирующий начало и завершение исходящих HTTP-запросов.
+/// </summary>
 public partial class LoggingDelegatingHandler(ILogger<LoggingDelegatingHandler> logger) : DelegatingHandler
 {
     protected override async Task<HttpResponseMessage> SendAsync(

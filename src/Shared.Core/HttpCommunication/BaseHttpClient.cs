@@ -8,6 +8,9 @@ using Shared.SharedKernel.Errors;
 
 namespace Shared.Core.HttpCommunication;
 
+/// <summary>
+/// Базовый HTTP-клиент с типовыми GET/POST/PUT/DELETE: парсит Envelope и превращает сбои в доменные ошибки.
+/// </summary>
 public abstract class BaseHttpClient(
     HttpClient httpClient,
     ILogger logger,

@@ -4,6 +4,9 @@ using Shared.SharedKernel.Errors;
 
 namespace Shared.Core.Database;
 
+/// <summary>
+/// Управляет транзакцией базы данных: начало, сохранение и коммит изменений.
+/// </summary>
 public interface ITransactionManager : IAsyncDisposable
 {
     Task<UnitResult<Error>> BeginTransactionAsync(CancellationToken cancellationToken = default);

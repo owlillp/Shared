@@ -1,9 +1,12 @@
-using Microsoft.AspNetCore.Http;
+﻿using Microsoft.AspNetCore.Http;
 using Shared.SharedKernel;
 using Shared.SharedKernel.Errors;
 
 namespace Shared.Framework.Endpoints;
 
+/// <summary>
+/// IResult, преобразующий доменный <see cref="Error"/> в HTTP-ответ с Envelope и соответствующим статусом.
+/// </summary>
 public class ErrorResult(Error error) : IResult
 {
     public Task ExecuteAsync(HttpContext httpContext)

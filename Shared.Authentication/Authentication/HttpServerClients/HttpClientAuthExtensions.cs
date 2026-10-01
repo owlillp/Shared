@@ -1,8 +1,11 @@
 ﻿using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 
-namespace Shared.Framework.Authentication.HttpClients;
+namespace Shared.Authentication.Authentication.HttpServerClients;
 
+/// <summary>
+/// Регистрирует провайдер сервисного токена и forwarding-handler для исходящих HTTP-запросов.
+/// </summary>
 public static class HttpClientAuthExtensions
 {
     public static IServiceCollection AddServiceTokenForwarding(

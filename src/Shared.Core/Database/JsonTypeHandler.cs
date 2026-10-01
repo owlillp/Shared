@@ -4,6 +4,9 @@ using Dapper;
 
 namespace Shared.Core.Database;
 
+/// <summary>
+/// Dapper type handler, сохраняющий и читающий значение как JSON-строку.
+/// </summary>
 public class JsonTypeHandler<T> : SqlMapper.TypeHandler<T>
 {
     public override void SetValue(IDbDataParameter parameter, T? value)

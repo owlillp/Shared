@@ -1,4 +1,4 @@
-using Microsoft.AspNetCore.Builder;
+﻿using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Http;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.Hosting;
@@ -9,6 +9,9 @@ using Serilog.Formatting.Compact;
 
 namespace Shared.Framework.Logging;
 
+/// <summary>
+/// Настройка Serilog: bootstrap-логгер, интеграция с хостом и логирование HTTP-запросов.
+/// </summary>
 public static class LoggingExtensions
 {
     public static ILogger CreateBootstrapLogger(string serviceName)

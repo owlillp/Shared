@@ -1,7 +1,10 @@
-﻿using Shared.Framework.Authentication;
+﻿using Shared.Authentication.Authentication.UserScope;
 
-namespace Shared.Framework.Authorization.Roles;
+namespace Shared.Authentication.Authorization.Roles;
 
+/// <summary>
+/// Сопоставляет роли с правами по переданной статической карте.
+/// </summary>
 public sealed class RolePermissionResolver(IReadOnlyDictionary<string, IReadOnlyList<string>> rolePermissions) : IPermissionResolver
 {
     public IReadOnlyCollection<string> ResolvePermissions(IEnumerable<string> roles)

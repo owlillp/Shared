@@ -1,5 +1,8 @@
-namespace Shared.Framework.Cors;
+﻿namespace Shared.Framework.Cors;
 
+/// <summary>
+/// Настройки CORS (секция Cors): origins, credentials, headers и methods.
+/// </summary>
 public class CorsSettings
 {
     public const string SECTION_NAME = "Cors";

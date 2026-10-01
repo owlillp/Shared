@@ -5,8 +5,11 @@ using Microsoft.Extensions.Logging;
 using Microsoft.Extensions.Options;
 using Shared.SharedKernel.Errors;
 
-namespace Shared.Framework.Authentication.HttpClients;
+namespace Shared.Authentication.Authentication.HttpServerClients;
 
+/// <summary>
+/// Кэширующий провайдер access-токена, получаемого по client_credentials.
+/// </summary>
 public sealed class ServiceTokenProvider(
     IHttpClientFactory httpClientFactory,
     TimeProvider timeProvider,
@@ -84,9 +87,9 @@ public sealed class ServiceTokenProvider(
     {
         List<KeyValuePair<string, string>> form =
         [
-            new KeyValuePair<string, string>("grant_type", "client_credentials"),
-            new KeyValuePair<string, string>("client_id", _options.ClientId),
-            new KeyValuePair<string, string>("client_secret", _options.ClientSecret),
+            new ("grant_type", "client_credentials"),
+            new ("client_id", _options.ClientId),
+            new ("client_secret", _options.ClientSecret),
         ];
 
         if (_options.Scopes.Count > 0)

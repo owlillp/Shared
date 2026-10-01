@@ -1,7 +1,10 @@
-using Shared.SharedKernel.Errors;
+﻿using Shared.SharedKernel.Errors;
 
 namespace Shared.SharedKernel.Exceptions;
 
+/// <summary>
+/// Исключение конфликтной ситуации (HTTP 409), оборачивающее доменный <see cref="Error"/>.
+/// </summary>
 public class ConflictException : Exception
 {
     public Error Error { get; } = null!;

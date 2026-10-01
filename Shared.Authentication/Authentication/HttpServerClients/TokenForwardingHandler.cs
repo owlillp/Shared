@@ -1,8 +1,11 @@
 ﻿using System.Net.Http.Headers;
 using Microsoft.AspNetCore.Http;
 
-namespace Shared.Framework.Authentication.HttpClients;
+namespace Shared.Authentication.Authentication.HttpServerClients;
 
+/// <summary>
+/// Пробрасывает входящий Authorization или подставляет сервисный токен в исходящий запрос.
+/// </summary>
 public sealed class TokenForwardingHandler(
     IHttpContextAccessor httpContextAccessor,
     ServiceTokenProvider serviceTokenProvider) : DelegatingHandler

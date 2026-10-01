@@ -1,8 +1,11 @@
-using System.Text.Json.Serialization;
+﻿using System.Text.Json.Serialization;
 using Shared.SharedKernel.Exceptions;
 
 namespace Shared.SharedKernel.Errors;
 
+/// <summary>
+/// Доменная ошибка: набор сообщений, тип и поведение (permanent/transient).
+/// </summary>
 public record Error
 {
     public IReadOnlyList<ErrorMessage> Messages { get; } = [];

@@ -4,6 +4,7 @@
     <File Path="Directory.Build.props" />
     <File Path="Directory.Packages.props" />
   </Folder>
+  <Project Path="Shared.Authentication/Shared.Authentication.csproj" />
   <Project Path="src\Shared.Core\Shared.Core.csproj" />
   <Project Path="src\Shared.Framework\Shared.Framework.csproj" />
   <Project Path="src\Shared.Messaging\Shared.Messaging.csproj" />

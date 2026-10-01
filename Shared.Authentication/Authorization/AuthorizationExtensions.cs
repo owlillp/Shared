@@ -1,8 +1,11 @@
 ﻿using Microsoft.AspNetCore.Builder;
-using Shared.Framework.Authorization.Permissions;
+using Shared.Authentication.Authorization.Permissions;
 
-namespace Shared.Framework.Authorization;
+namespace Shared.Authentication.Authorization;
 
+/// <summary>
+/// Extension-методы политик авторизации для endpoints: права, роли и анонимный доступ.
+/// </summary>
 public static class AuthorizationExtensions
 {
     public static TBuilder AllowAnonymousEndpoint<TBuilder>(this TBuilder builder)

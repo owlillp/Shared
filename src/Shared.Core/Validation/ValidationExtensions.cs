@@ -5,6 +5,9 @@ using Shared.SharedKernel.Errors;
 
 namespace Shared.Core.Validation;
 
+/// <summary>
+/// Преобразует результат FluentValidation в доменный Error.
+/// </summary>
 public static class ValidationExtensions
 {
     public static Error ToError(this ValidationResult validationResult)

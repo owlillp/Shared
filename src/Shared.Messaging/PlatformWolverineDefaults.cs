@@ -5,6 +5,9 @@ using Wolverine.RabbitMQ.Internal;
 
 namespace Shared.Messaging;
 
+/// <summary>
+/// Платформенные настройки Wolverine по умолчанию: durability, ретраи отправки и publisher confirms.
+/// </summary>
 public static class PlatformWolverineDefaults
 {
     public static readonly TimeSpan DEFAULT_OUTBOX_STALE_TIME = TimeSpan.FromSeconds(5);

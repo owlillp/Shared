@@ -1,4 +1,5 @@
 ﻿using System.Security.Authentication;
+using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Http;
 using Microsoft.Extensions.Logging;
 using Shared.SharedKernel;
@@ -7,6 +8,20 @@ using Shared.SharedKernel.Exceptions;
 
 namespace Shared.Framework.Middlewares;
 
+/// <summary>
+/// Подключение <see cref="ExceptionMiddleware"/> в конвейер запросов.
+/// </summary>
+public static class ExceptionMiddlewareExtensions
+{
+    public static IApplicationBuilder UseExceptionMiddleware(this IApplicationBuilder builder)
+    {
+        return builder.UseMiddleware<ExceptionMiddleware>();
+    }
+}
+
+/// <summary>
+/// Ловит необработанные исключения и отдаёт Envelope с соответствующим HTTP-статусом.
+/// </summary>
 public class ExceptionMiddleware(RequestDelegate next, ILogger<ExceptionMiddleware> logger)
 {
     public async Task InvokeAsync(HttpContext context)

@@ -1,4 +1,4 @@
-using System.Reflection;
+﻿using System.Reflection;
 using CSharpFunctionalExtensions;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Http;
@@ -9,6 +9,9 @@ using IResult = Microsoft.AspNetCore.Http.IResult;
 
 namespace Shared.Framework.Endpoints;
 
+/// <summary>
+/// IResult для <see cref="UnitResult{Error}"/>: успешный Envelope или ответ с ошибкой и нужным статусом.
+/// </summary>
 public sealed class EndpointResult(UnitResult<Error> result) : IResult, IEndpointMetadataProvider
 {
     private readonly IResult _result = result.IsSuccess
@@ -34,6 +37,9 @@ public sealed class EndpointResult(UnitResult<Error> result) : IResult, IEndpoin
     public static EndpointResult ToEndpointResult(UnitResult<Error> result) => new(result);
 }
 
+/// <summary>
+/// IResult для <see cref="Result{TValue, Error}"/> или значения: успешный Envelope&lt;T&gt; либо ответ с ошибкой.
+/// </summary>
 public sealed class EndpointResult<TValue> : IResult, IEndpointMetadataProvider
 {
     private readonly IResult _result;

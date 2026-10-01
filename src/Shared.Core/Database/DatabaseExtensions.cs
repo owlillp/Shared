@@ -5,6 +5,9 @@ using Shared.SharedKernel.Abstractions;
 
 namespace Shared.Core.Database;
 
+/// <summary>
+/// Регистрирует Dapper-обработчики для типов, помеченных <see cref="IDapperJson"/>.
+/// </summary>
 public static class DatabaseExtensions
 {
     public static IServiceCollection AddDapperJson(this IServiceCollection services, params Assembly[] assemblies)

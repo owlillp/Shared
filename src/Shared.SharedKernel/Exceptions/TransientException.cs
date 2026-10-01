@@ -1,7 +1,10 @@
-using Shared.SharedKernel.Errors;
+﻿using Shared.SharedKernel.Errors;
 
 namespace Shared.SharedKernel.Exceptions;
 
+/// <summary>
+/// Временная ошибка, допускающая повторную обработку.
+/// </summary>
 public class TransientException : Exception
 {
     public Error Error { get; } = null!;

@@ -1,9 +1,12 @@
-using System.Net;
+﻿using System.Net;
 using Microsoft.AspNetCore.Http;
 using Shared.SharedKernel;
 
 namespace Shared.Framework.Endpoints;
 
+/// <summary>
+/// IResult успешного ответа с пустым Envelope.
+/// </summary>
 public class SuccessResult : IResult
 {
     public Task ExecuteAsync(HttpContext httpContext)
@@ -18,6 +21,9 @@ public class SuccessResult : IResult
     }
 }
 
+/// <summary>
+/// IResult успешного ответа с Envelope, содержащим полезную нагрузку.
+/// </summary>
 public class SuccessResult<TValue>(TValue value) : IResult
 {
     public Task ExecuteAsync(HttpContext httpContext)

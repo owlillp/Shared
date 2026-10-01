@@ -1,22 +1,12 @@
-﻿using Microsoft.AspNetCore.Builder;
-using Microsoft.AspNetCore.Http;
+using Microsoft.AspNetCore.Builder;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.DependencyInjection.Extensions;
 
-namespace Shared.Framework.Authentication.UserScope;
+namespace Shared.Authentication.Authentication.UserScope;
 
-public sealed class UserScopedDataMiddleware(RequestDelegate next)
-{
-    public Task InvokeAsync(
-        HttpContext context,
-        UserScopedData userScopedData,
-        IPermissionResolver permissionResolver)
-    {
-        userScopedData.Hydrate(context.User, permissionResolver);
-        return next(context);
-    }
-}
-
+/// <summary>
+/// Регистрация и подключение middleware данных текущего пользователя.
+/// </summary>
 public static class UserScopedDataExtensions
 {
     public static IServiceCollection AddUserScopedData(this IServiceCollection services)

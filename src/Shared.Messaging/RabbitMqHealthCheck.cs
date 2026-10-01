@@ -3,19 +3,18 @@ using RabbitMQ.Client;
 
 namespace Shared.Messaging;
 
-public sealed class RabbitMqHealthCheck : IHealthCheck, IAsyncDisposable
+/// <summary>
+/// Health-check доступности RabbitMQ с переиспользуемым подключением.
+/// </summary>
+public sealed class RabbitMqHealthCheck(Uri connectionUri) : IHealthCheck, IAsyncDisposable
 {
-    private readonly ConnectionFactory _factory;
-    private IConnection? _connection;
-
-    public RabbitMqHealthCheck(Uri connectionUri)
+    private readonly ConnectionFactory _factory = new()
     {
-        _factory = new ConnectionFactory
-        {
-            Uri = connectionUri,
-            AutomaticRecoveryEnabled = false,
-        };
-    }
+        Uri = connectionUri,
+        AutomaticRecoveryEnabled = false,
+    };
+
+    private IConnection? _connection;
 
     public async Task<HealthCheckResult> CheckHealthAsync(
         HealthCheckContext context,

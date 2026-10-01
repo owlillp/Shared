@@ -5,6 +5,9 @@ using Shared.SharedKernel.Errors;
 
 namespace Shared.Core.Validation;
 
+/// <summary>
+/// Дополнительные правила FluentValidation: проверка value object и привязка доменного Error к правилу.
+/// </summary>
 public static class CustomValidators
 {
     public static IRuleBuilderOptionsConditions<T, TElement> MustBeValueObject<T, TElement, TValueObject>(

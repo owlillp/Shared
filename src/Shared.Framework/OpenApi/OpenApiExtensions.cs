@@ -3,6 +3,9 @@ using Microsoft.OpenApi;
 
 namespace Shared.Framework.OpenApi;
 
+/// <summary>
+/// Регистрирует OpenAPI-документ с заданными заголовком и версией.
+/// </summary>
 public static class OpenApiExtensions
 {
     public static IServiceCollection AddOpenApiSpec(this IServiceCollection services, string title, string version)

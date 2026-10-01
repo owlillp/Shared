@@ -4,6 +4,9 @@ using System.Web;
 
 namespace Shared.Core.HttpCommunication;
 
+/// <summary>
+/// Fluent-построитель query string с url-кодированием значений.
+/// </summary>
 public sealed class QueryStringBuilder
 {
     private readonly List<KeyValuePair<string, string>> _params = [];

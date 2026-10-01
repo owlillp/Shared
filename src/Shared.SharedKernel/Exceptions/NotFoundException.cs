@@ -1,7 +1,10 @@
-using Shared.SharedKernel.Errors;
+﻿using Shared.SharedKernel.Errors;
 
 namespace Shared.SharedKernel.Exceptions;
 
+/// <summary>
+/// Исключение отсутствия сущности (HTTP 404), оборачивающее доменный <see cref="Error"/>.
+/// </summary>
 public class NotFoundException : Exception
 {
     public Error Error { get; } = null!;

@@ -4,12 +4,16 @@ using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
-using Shared.Framework.Authentication.UserScope;
-using Shared.Framework.Authorization.Permissions;
-using Shared.Framework.Authorization.Roles;
+using Shared.Authentication.Authentication;
+using Shared.Authentication.Authentication.UserScope;
+using Shared.Authentication.Authorization.Permissions;
+using Shared.Authentication.Authorization.Roles;
 
-namespace Shared.Framework.Authentication;
+namespace Shared.Authentication;
 
+/// <summary>
+/// Настройка JWT Bearer-аутентификации и авторизации по ролям и правам.
+/// </summary>
 public static class AuthenticationExtensions
 {
     public static IServiceCollection AddPlatformAuthentication(

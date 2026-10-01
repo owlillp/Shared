@@ -1,9 +1,12 @@
-using Microsoft.AspNetCore.Authorization;
+﻿using Microsoft.AspNetCore.Authorization;
 using Microsoft.Extensions.Options;
-using Shared.Framework.Authorization.Roles;
+using Shared.Authentication.Authorization.Roles;
 
-namespace Shared.Framework.Authorization.Permissions;
+namespace Shared.Authentication.Authorization.Permissions;
 
+/// <summary>
+/// Динамически создаёт политики авторизации по префиксам прав и ролей.
+/// </summary>
 public sealed class PermissionPolicyProvider(
     IOptions<AuthorizationOptions> options) : IAuthorizationPolicyProvider
 {

@@ -1,4 +1,4 @@
-using System.Net.Http.Json;
+﻿using System.Net.Http.Json;
 using System.Text.Json;
 using CSharpFunctionalExtensions;
 using Shared.SharedKernel;
@@ -7,6 +7,9 @@ using Shared.SharedKernel.Serializations;
 
 namespace Shared.Core.HttpCommunication;
 
+/// <summary>
+/// Extension-методы чтения Envelope из HttpResponseMessage в Result/UnitResult.
+/// </summary>
 public static class HttpResponseMessageExtensions
 {
     extension(HttpResponseMessage httpResponse)
